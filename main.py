@@ -1,7 +1,7 @@
 import torch
 
 # Load Model
-model = torch.hub.load('ultralytics/yolov5', 'custom',  path_or_model='model_20210326.pt')
+model = torch.hub.load('ultralytics/yolov5', 'custom', path_or_model='models/model_20210428.pt')
 
 # Model attributes, currently set as:
 model.conf = 0.08  # confidence threshold (0-1)
