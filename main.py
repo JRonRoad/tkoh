@@ -8,7 +8,7 @@ model.conf = 0.08  # confidence threshold (0-1)
 model.iou = 0.3  # NMS IoU threshold (0-1)
 
 # Load Image
-img_path = 'input/4.jpeg'
+img_path = 'input/IMG_0078.jpg'
 # a variety of input format supported:
 #   filename:   img = 'data/zidane.jpg'
 #   URI:             = 'https://github.com/ultralytics/yolov5/releases/download/v1.0/zidane.jpg'
