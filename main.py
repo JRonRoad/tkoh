@@ -20,9 +20,11 @@ img_path = 'input/IMG_0078.jpg'
 
 # Inference
 results = model(img_path, size=640)
+confidence = results.pred[0].T[4].item()
 
 # Post processing
 results.print()  # or .show(), .save()
+print("confidence:{:.2f}".format(confidence))
 results.save()  # save processed images to directory /results/
 
 items_detected = results.pred[0].shape[0]
