@@ -20,13 +20,15 @@ img_path = 'input/IMG_0078.jpg'
 
 # Inference
 results = model(img_path, size=640)
-confidence = results.pred[0].T[4].item()
+confidence = results.pred[0].T[4].item() if results.pred[0].shape[0] >0 else None
 
 # Post processing
 results.print()  # or .show(), .save()
-print("confidence:{:.2f}".format(confidence))
+if confidence is not None:
+    print("confidence:{:.2f}".format(confidence))
 results.save()  # save processed images to directory /results/
 
 items_detected = results.pred[0].shape[0]
 guide_wire = True if items_detected>0 else False
+
 print("Guide wire exists!" if guide_wire else "No wire!")
