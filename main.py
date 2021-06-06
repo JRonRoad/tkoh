@@ -1,7 +1,8 @@
 import torch
 
 # Load Model
-model = torch.hub.load('ultralytics/yolov5', 'custom', path_or_model='models/model_20210428.pt')
+# model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/model_20210428.pt')    # from remote repo
+model = torch.hub.load('models/ultralytics_yolov5_master', 'custom', path='models/model_20210428.pt', source='local')     # local repo
 
 # Model attributes, currently set as:
 model.conf = 0.08  # confidence threshold (0-1)
@@ -28,7 +29,13 @@ if confidence is not None:
     print("confidence:{:.2f}".format(confidence))
 results.save()  # save processed images to directory /results/
 
-items_detected = results.pred[0].shape[0]
-guide_wire = True if items_detected>0 else False
+num_guide_wire = results.pred[0].shape[0]
+guide_wire_exist = True if num_guide_wire>0 else False
 
-print("Guide wire exists!" if guide_wire else "No wire!")
+# print("Guide wire exists!" if guide_wire_exist else "No wire!")
+if guide_wire_exist:
+    print("%d Guide Wire(s)"%num_guide_wire)
+else:
+    print("No wire!")
+
+
