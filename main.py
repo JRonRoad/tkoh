@@ -1,4 +1,6 @@
 import torch
+import sys
+from PIL import UnidentifiedImageError
 
 # Load Model
 # model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/model_20210428.pt')    # from remote repo
@@ -20,8 +22,15 @@ img_path = 'input/IMG_0078.jpg'
 #   multiple:        = [Image.open('image1.jpg'), Image.open('image2.jpg'), ...]  # list of images
 
 # Inference
-results = model(img_path, size=640)
-confidence = results.pred[0].T[4].item() if results.pred[0].shape[0] >0 else None
+try:
+    results = model(img_path, size=640)
+    confidence = results.pred[0].T[4].item() if results.pred[0].shape[0] >0 else None
+except OSError as err:
+    print("OS error: {0}".format(err))
+    exit()
+except:
+    print("Unexpected error:", sys.exc_info()[0])
+    exit()
 
 # Post processing
 results.print()  # or .show(), .save()
