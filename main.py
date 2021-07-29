@@ -4,7 +4,7 @@ from PIL import UnidentifiedImageError
 
 # Load Model
 # model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/model_20210428.pt')    # from remote repo
-model = torch.hub.load('models/ultralytics_yolov5_master', 'custom', path='models/model_20210428.pt', source='local')     # local repo
+model = torch.hub.load('models/ultralytics_yolov5_master', 'custom', path='models/model_20210729.pt', source='local')     # local repo
 
 # Model attributes, currently set as:
 model.conf = 0.08  # confidence threshold (0-1)
@@ -24,7 +24,7 @@ img_path = 'input/IMG_0078.jpg'
 # Inference
 try:
     results = model(img_path, size=640)
-    confidence = results.pred[0].T[4].item() if results.pred[0].shape[0] >0 else None
+    confidence = results.pred[0].T[4].item() if results.pred[0].shape[0] > 0 else None
 except OSError as err:
     print("OS error: {0}".format(err))
     exit()
