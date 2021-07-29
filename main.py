@@ -11,7 +11,7 @@ model.conf = 0.08  # confidence threshold (0-1)
 model.iou = 0.3  # NMS IoU threshold (0-1)
 
 # Load Image
-img_path = 'input/IMG_0078.jpg'
+img_path = 'input/IMG_9959.jpg'
 # a variety of input format supported:
 #   filename:   img = 'data/zidane.jpg'
 #   URI:             = 'https://github.com/ultralytics/yolov5/releases/download/v1.0/zidane.jpg'
@@ -24,7 +24,7 @@ img_path = 'input/IMG_0078.jpg'
 # Inference
 try:
     results = model(img_path, size=640)
-    confidence = results.pred[0].T[4].item() if results.pred[0].shape[0] > 0 else None
+    confidence = float(torch.mean(results.pred[0].T[4])) if results.pred[0].shape[0] > 0 else None
 except OSError as err:
     print("OS error: {0}".format(err))
     exit()
