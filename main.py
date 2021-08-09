@@ -4,7 +4,7 @@ from PIL import UnidentifiedImageError
 
 # Load Model
 # model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/model_20210428.pt')    # from remote repo
-model = torch.hub.load('models/ultralytics_yolov5_master', 'custom', path='models/model_20210730.pt', source='local')     # local repo
+model = torch.hub.load('models/ultralytics_yolov5_master', 'custom', path='models/model_20210809.pt', source='local')     # local repo
 
 # Model attributes, currently set as:
 model.conf = 0.6  # confidence threshold (0-1)
